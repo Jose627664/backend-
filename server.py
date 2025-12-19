@@ -39,8 +39,12 @@ else:
     db = None
     print("⚠️ MongoDB not configured — running without DB")
 client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+db_name = os.getenv("DB_NAME")
 
+if mongo_url and db_name:
+    db = client[db_name]
+else:
+    db = None
 # Create the main app
 app = FastAPI(title="Afro-Latino Marketplace API")
 
