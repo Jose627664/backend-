@@ -8,9 +8,7 @@ import logging
 from pathlib import Path
 from typing import Optional, List
 from datetime import datetime, timedelta, timezone
-from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionRequest
 import asyncio
-
 # Import models and auth
 from models import (
     User, UserCreate, UserLogin, UserResponse, UserSession,
