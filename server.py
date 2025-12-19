@@ -26,7 +26,16 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-mongo_url = os.environ['MONGO_URL']
+from pymongo import mongoClient
+import os
+mongo_url = os.getenv['MONGO_URL']
+if mongo_url:
+    client = MongoClient(mongo_url)
+    db = client.get_database()
+    print("✅ MongoDB connected")
+else:
+    db = None
+    print("⚠️ MongoDB not configured — running without DB")
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
