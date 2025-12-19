@@ -26,7 +26,7 @@ ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
 # MongoDB connection
-from pymongo import mongoClient
+from pymongo import MongoClient
 import os
 mongo_url = os.getenv['MONGO_URL']
 if mongo_url:
